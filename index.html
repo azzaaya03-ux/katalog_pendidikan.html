@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BelajarGratis.id - Katalog Bimbel Online Gratis</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #10b981;
+      --bg-light: #f8fafc;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --white: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--secondary);
+    }
+
+    .nav-links a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: var(--white);
+      text-align: center;
+      padding: 4rem 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.95;
+    }
+
+    .filter-container {
+      max-width: 1200px;
+      margin: 2rem auto 1rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 1.5rem auto 4rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Banner Gambar Tanpa Tag IMG */
+    .card-banner {
+      position: relative;
+      width: 100%;
+      height: 185px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .banner-utbk {
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+    }
+
+    .banner-coding {
+      background: linear-gradient(135deg, #059669, #10b981);
+    }
+
+    .banner-bahasa {
+      background: linear-gradient(135deg, #4f46e5, #818cf8);
+    }
+
+    .banner-icon {
+      font-size: 2.75rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .banner-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .banner-sub {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    .badge-free {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: var(--secondary);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 50px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    .card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-category {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--text-dark);
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+
+    .btn-start {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background-color: var(--primary);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <a href="#" class="logo">Belajar<span>Gratis.id</span></a>
+      <div class="nav-links">
+        <a href="#katalog">Katalog Kelas</a>
+        <a href="#tentang">Tentang</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Akses Bimbel Berkualitas Tanpa Biaya</h1>
+    <p>Pelajari materi UTBK, pemrograman, hingga bahasa asing secara mandiri dengan modul terstruktur.</p>
+  </section>
+
+  <div class="filter-container" id="katalog">
+    <button class="filter-btn active" onclick="filterKelas('semua', this)">Semua Kelas</button>
+    <button class="filter-btn" onclick="filterKelas('utbk', this)">UTBK / SNBT</button>
+    <button class="filter-btn" onclick="filterKelas('coding', this)">Pemrograman</button>
+    <button class="filter-btn" onclick="filterKelas('bahasa', this)">Bahasa Asing</button>
+  </div>
+
+  <main class="container">
+    <div class="catalog-grid">
+
+      <!-- Kartu 1 -->
+      <div class="card" data-kategori="utbk">
+        <div class="card-banner banner-utbk">
+          <span class="badge-free">GRATIS</span>
+          <div class="banner-icon">🎓</div>
+          <div class="banner-title">UTBK / SNBT</div>
+          <div class="banner-sub">Penalaran Umum &amp; Kuantitatif</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">UTBK • PENALARAN</div>
+          <h2 class="card-title">Intensif Penalaran Umum SNBT</h2>
+          <p class="card-desc">Kupas tuntas soal-soal logika deduktif, induktif, dan penalaran kuantitatif beserta trik cepatnya.</p>
+          <div class="card-meta">
+            <span>📚 30 Modul</span>
+            <span>⏱️ 18 Jam</span>
+          </div>
+          <a href="#" class="btn-start">Mulai Belajar</a>
+        </div>
+      </div>
+
+      <!-- Kartu 2 -->
+      <div class="card" data-kategori="coding">
+        <div class="card-banner banner-coding">
+          <span class="badge-free">GRATIS</span>
+          <div class="banner-icon">💻</div>
+          <div class="banner-title">WEB DEVELOPMENT</div>
+          <div class="banner-sub">HTML, CSS &amp; JavaScript</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">CODING • WEB DEV</div>
+          <h2 class="card-title">Dasar HTML, CSS &amp; JavaScript</h2>
+          <p class="card-desc">Bangun website responsif pertamamu dari nol hingga siap dipublikasikan ke internet.</p>
+          <div class="card-meta">
+            <span>📚 24 Modul</span>
+            <span>⏱️ 15 Jam</span>
+          </div>
+          <a href="#" class="btn-start">Mulai Belajar</a>
+        </div>
+      </div>
+
+      <!-- Kartu 3 -->
+      <div class="card" data-kategori="bahasa">
+        <div class="card-banner banner-bahasa">
+          <span class="badge-free">GRATIS</span>
+          <div class="banner-icon">🌍</div>
+          <div class="banner-title">TOEFL ITP</div>
+          <div class="banner-sub">Listening, Structure &amp; Reading</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">BAHASA • TOEFL</div>
+          <h2 class="card-title">Strategi Skor Tinggi TOEFL ITP</h2>
+          <p class="card-desc">Latihan listening, structure, dan reading comprehension dengan pembahasan lengkap tiap soal.</p>
+          <div class="card-meta">
+            <span>📚 20 Modul</span>
+            <span>⏱️ 12 Jam</span>
+          </div>
+          <a href="#" class="btn-start">Mulai Belajar</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="tentang">
+    <p>&copy; 2026 BelajarGratis.id — Platform Pendidikan Terbuka untuk Semua.</p>
+  </footer>
+
+  <script>
+    function filterKelas(kategori, tombol) {
+      const semuaTombol = document.querySelectorAll('.filter-btn');
+      semuaTombol.forEach(btn => btn.classList.remove('active'));
+      tombol.classList.add('active');
+
+      const semuaKartu = document.querySelectorAll('.card');
+      semuaKartu.forEach(kartu => {
+        if (kategori === 'semua' || kartu.dataset.kategori === kategori) {
+          kartu.style.display = 'flex';
+        } else {
+          kartu.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
+
+        
